@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Incoterms® 2020 한눈에 보기 | KBridge</title>
+  <meta name="description" content="Incoterms® 2020 규칙 11개(EXW, FCA, FAS, FOB, CFR, CIF, CPT, CIP, DAP, DPU, DDP)를 운송수단·위험이전·비용부담 기준으로 쉽게 비교하는 가이드." />
+  <meta name="keywords" content="인코텀즈, Incoterms 2020, 무역조건, EXW, FCA, FAS, FOB, CFR, CIF, CPT, CIP, DAP, DPU, DDP, 수출입, 물류" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230ea5e9'/%3E%3Cstop offset='1' stop-color='%232563eb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='28' fill='white' font-family='Arial, Helvetica, sans-serif'%3EK%3C/text%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --kb-grad-from:#0ea5e9; /* sky-500 */
+      --kb-grad-to:#2563eb;   /* blue-600 */
+      --kb-primary:#2563eb;   /* blue-600 */
+      --kb-primary-700:#1d4ed8; /* blue-700 */
+      --kb-primary-50:#eff6ff;  /* blue-50 */
+      --kb-primary-100:#dbeafe; /* blue-100 */
+      --kb-primary-200:#bfdbfe; /* blue-200 */
+      --kb-ring: rgba(37,99,235,.35);
+    }
+    body{ font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji"; }
+    ::selection{ background: color-mix(in oklab, var(--kb-primary) 25%, transparent); }
+
+    /* 프린트 최적화 */
+    @media print {
+      .no-print { display: none !important; }
+      .print-break { break-after: page; }
+      body { color: #000; }
+      header { background: #fff !important; color:#000 !important; }
+      a, .btn { color:#000 !important; background:transparent !important; box-shadow:none !important; border-color:#000 !important; }
+      .seg { display:none !important; }
+      .risk-table { font-size: 12pt !important; }
+    }
+    @page { size: A4; margin: 16mm; }
+
+    /* 버튼 */
+    .btn{ display:inline-flex; align-items:center; gap:.5rem; border-radius:9999px; padding:.5rem .75rem; font-size:.9rem; font-weight:700; transition:background .2s ease, box-shadow .2s ease, transform .08s ease, color .2s ease, border-color .2s ease; text-decoration:none; border:2px solid transparent; }
+    .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--kb-ring); }
+    .btn:active{ transform:translateY(1px); }
+    .btn-primary{ background:var(--kb-primary); color:#fff; border-color:var(--kb-primary); }
+    .btn-primary:hover{ background:var(--kb-primary-700); border-color:var(--kb-primary-700); }
+    .btn-cta{ background:#fff; color:var(--kb-primary); border-color:#fff; }
+    .btn-cta:hover{ background:#f8fafc; border-color:#f8fafc; }
+    .btn-accent{ background:transparent; color:#fff; border-color:#fff; }
+    .btn-accent:hover{ background:rgba(255,255,255,.12); }
+    .icon{ width:1rem; height:1rem; display:inline-block; }
+    /* 헤더 버튼 색상 강제 구분 */
+    .header-actions .btn-cta{ background:#fff !important; color:var(--kb-primary) !important; border-color:#fff !important; }
+    .header-actions .btn-cta:hover{ background:#f8fafc !important; }
+    .header-actions .btn-accent{ background:transparent !important; color:#fff !important; border-color:#fff !important; }
+    .header-actions .btn-accent:hover{ background:rgba(255,255,255,.12) !important; }
+
+    /* 배지 */
+    .badge { border: 1px solid var(--kb-primary-100); background: var(--kb-primary-50); color: #0f172a; font-weight: 600; font-size: .72rem; padding: .25rem .5rem; border-radius: 9999px; }
+    .badge.neutral{ border-color: rgb(226,232,240); background: rgb(248,250,252); }
+
+    /* 인풋/셀렉트 */
+    .ctrl{ border:1px solid rgb(203,213,225); border-radius:.5rem; padding:.5rem .75rem; font-size:.9rem; background:#fff; }
+    .ctrl:focus{ outline:none; box-shadow:0 0 0 4px var(--kb-ring); }
+
+    /* 카드 & 표 */
+    .card{ transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; border:1px solid rgb(226,232,240); border-radius:1rem; background:#fff; }
+    .card:hover{ box-shadow: 0 8px 30px -12px rgba(37,99,235,.35); transform: translateY(-2px); border-color: var(--kb-primary-100); }
+    thead th{ font-weight:700; }
+    thead{ background: var(--kb-primary-50); }
+    table{ border-collapse: separate; border-spacing: 0; }
+
+    /* 본문 가독성 */
+    .content-text{ font-size:1rem; line-height:1.8; letter-spacing:-0.01em; }
+    .risk-highlight{ font-size:1.05rem; line-height:1.85; color:#0f172a; background:#f8fafc; border-left:4px solid var(--kb-primary-200); padding:.75rem 1rem; border-radius:.5rem; }
+
+    /* 칩(셀러/바이어) */
+    .chip{ display:inline-flex; align-items:center; justify-content:center; min-width:2rem; height:1.6rem; border-radius:9999px; font-weight:800; font-size:.78rem; padding:0 .5rem; }
+    .chip-s{ background:var(--kb-primary-100); color:#1e3a8a; border:1px solid var(--kb-primary-200); }
+    .chip-b{ background:#eef2f7; color:#0f172a; border:1px solid #e5e7eb; }
+
+    /* 비교표 보기 전환 */
+    .seg{ display:flex; align-items:center; gap:2px; border:1px solid #e5e7eb; border-radius:9999px; padding:2px; background:#fff; }
+    .seg-btn{ border:0; background:transparent; color:#334155; font-weight:800; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; cursor:pointer; }
+    .seg-btn.is-active{ background:var(--kb-primary); color:#fff; }
+
+    /* 위험 이전 요약표 */
+    .risk-table{ font-size:1.06rem; }
+    .risk-table thead th{ position: sticky; top: 0; z-index: 1; }
+    .risk-table th{ font-weight:800; }
+    .risk-table td, .risk-table th{ padding:.9rem; }
+    .risk-table tbody tr:hover{ outline:2px solid var(--kb-primary-100); outline-offset:-2px; background:#f8fafc; }
+    .risk-name{ font-weight:700; }
+    .risk-name small{ font-weight:600; color:#64748b; margin-left:.25rem; }
+
+    /* 툴팁 */
+    .tooltip { position: relative; cursor: help; }
+    .tooltip:hover .tooltip-content { opacity: 1; transform: translateY(0); }
+    .tooltip-content { position:absolute; left:0; top:120%; background:#0f172a; color:#fff; padding:.5rem .75rem; font-size:.8rem; border-radius:.5rem; opacity:0; transform: translateY(-4px); transition: all .15s ease; white-space:nowrap; z-index:30; }
+  
+/* === Compare summary: full-width grid layout v7 === */
+/* Force the compare tables to occupy full width and distribute columns precisely */
+section#compare .overflow-x-auto{ padding:0 !important; margin:0 !important; }
+section#compare .card{ padding:0 !important; }
+
+/* Keep table semantics but lay out rows as grid */
+#tableV, #tableH{ width:100% !important; table-layout:fixed !important; border-collapse:separate !important; border-spacing:0 !important; }
+#tableV thead tr, #tableV tbody tr{ display:grid !important; grid-template-columns: 16% repeat(10, 1fr) !important; }
+#tableH thead tr, #tableH tbody tr{ display:grid !important; grid-template-columns: 18% repeat(11, 1fr) !important; }
+
+#tableV thead th, #tableV tbody td,
+#tableH thead th, #tableH tbody td{ display:block !important; }
+
+/* Alignment & spacing */
+section#compare thead th, section#compare tbody td{ white-space:nowrap !important; vertical-align:middle !important; }
+section#compare thead th{ text-align:center !important; }
+section#compare thead th:first-child{ text-align:left !important; }
+section#compare tbody td{ text-align:center !important; }
+section#compare tbody td:first-child{ text-align:left !important; font-weight:600 !important; }
+
+/* Column-wise growing horizontal padding (right-anchored feel) */
+section#compare #tableV thead th:nth-child(2), section#compare #tableV tbody td:nth-child(2){ padding: .6rem .90rem !important; }
+section#compare #tableV thead th:nth-child(3), section#compare #tableV tbody td:nth-child(3){ padding: .6rem .98rem !important; }
+section#compare #tableV thead th:nth-child(4), section#compare #tableV tbody td:nth-child(4){ padding: .6rem 1.06rem !important; }
+section#compare #tableV thead th:nth-child(5), section#compare #tableV tbody td:nth-child(5){ padding: .6rem 1.14rem !important; }
+section#compare #tableV thead th:nth-child(6), section#compare #tableV tbody td:nth-child(6){ padding: .6rem 1.22rem !important; }
+section#compare #tableV thead th:nth-child(7), section#compare #tableV tbody td:nth-child(7){ padding: .6rem 1.30rem !important; }
+section#compare #tableV thead th:nth-child(8), section#compare #tableV tbody td:nth-child(8){ padding: .6rem 1.38rem !important; }
+section#compare #tableV thead th:nth-child(9), section#compare #tableV tbody td:nth-child(9){ padding: .6rem 1.46rem !important; }
+section#compare #tableV thead th:nth-child(10), section#compare #tableV tbody td:nth-child(10){ padding: .6rem 1.54rem !important; }
+section#compare #tableV thead th:nth-child(11), section#compare #tableV tbody td:nth-child(11){ padding: .6rem 1.70rem !important; }
+
+/* Zebra rows spanning full width even with grid */
+section#compare tbody tr:nth-child(odd){ background:transparent !important; }
+section#compare tbody tr:nth-child(even){ background:rgba(148,163,184,.08) !important; }
+
+@media (max-width: 1024px){
+  #tableV thead tr, #tableV tbody tr{ grid-template-columns: 18% repeat(10, 1fr) !important; }
+  #tableH thead tr, #tableH tbody tr{ grid-template-columns: 20% repeat(11, 1fr) !important; }
+}
+
+/* === Risk quick view: readability v7 === */
+#risk .risk-table{ font-size: clamp(.75rem, .5vw + .48rem, .85rem) !important; line-height:1.58 !important; }
+#risk .risk-table td, #risk .risk-table th{ padding:.46rem .62rem !important; }
+#risk .risk-table thead th{ font-size:.92em !important; }
+#risk .risk-table .risk-name{ position: sticky; left:0; z-index:2; background:inherit; box-shadow: 2px 0 0 0 #e2e8f0; }
+
+
+/* === Mobile optimization v10 === */
+:root{ --tap-min:44px; }
+html{ -webkit-text-size-adjust:100%; font-size:clamp(15px, 0.45vw + 13px, 18px); }
+.btn{ min-height:var(--tap-min); }
+input, select, textarea{ min-height:var(--tap-min); }
+
+/* smooth horizontal scroll & hint */
+.overflow-x-auto{ -webkit-overflow-scrolling:touch; scroll-behavior:smooth; }
+
+@media (max-width: 640px){
+  /* Header: stack title & actions */
+  header .mx-auto{ flex-direction:column; align-items:flex-start; gap:.75rem; }
+  .header-actions{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+  .header-actions .btn{ width:100%; justify-content:center; }
+
+  /* Controls: full width */
+  #modeFilter, #search, .ctrl{ width:100% !important; }
+
+  /* Cards & sections */
+  header, section, main, footer{ padding-left:1rem; padding-right:1rem; }
+
+  /* Tables: compact + scroll hint */
+  .overflow-x-auto::after{
+    content:'← 좌우로 스크롤';
+    position:sticky; right:.5rem; bottom:.25rem;
+    font-size:.72rem; color:#64748b; background:rgba(255,255,255,.9);
+    padding:.15rem .4rem; border-radius:.5rem;
+  }
+
+  /* Risk table: smaller type, allow wrapping in the description column */
+  #risk .risk-table{ font-size:.92rem; min-width:720px; }
+  #risk .risk-table td:nth-child(2){ white-space:normal; line-height:1.6; }
+  #risk .risk-table td, #risk .risk-table th{ padding:.5rem .6rem; }
+}
+
+/* Very small devices */
+@media (max-width: 380px){
+  #risk .risk-table{ min-width:640px; }
+}
+
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- 헤더: Sky→Blue 그라디언트 -->
+  <header class="text-white" style="background:linear-gradient(90deg,var(--kb-grad-from),var(--kb-grad-to));">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 flex items-center gap-4">
+      <img src="/assets/logo/kbridge-white.png" alt="KBridge 케이브릿지 주식회사 로고 (white)" class="h-10 w-auto" onerror="this.style.display='none'"/>
+      <div class="grow">
+        <h1 class="text-2xl font-bold tracking-tight">Incoterms® 2020 한눈에 보기</h1>
+        <p class="text-white/80 text-sm sm:text-base">11개 규칙을 운송수단·위험 이전·비용부담 기준으로 직관 비교</p>
+      </div>
+      <div id="headerActions" class="no-print flex items-center gap-2 header-actions">
+        <button id="printBtn" class="btn btn-accent" aria-label="인쇄 또는 PDF 저장">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18h12v4H6z"/><path d="M6 14H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1"/></svg>
+          <span>인쇄/저장</span>
+        </button>
+        <a href="#compare" class="btn btn-cta" aria-label="비교표 바로가기">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg>
+          <span>비교표 바로가기</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 서브헤드: 필터/검색 -->
+  <section class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="badge">최신 기준: Incoterms® 2020</span>
+        <span class="badge">개정: 2020-01-01</span>
+        <span class="badge">규칙 수: 11</span>
+        <span class="tooltip badge neutral">참고
+          <span class="tooltip-content">ICC(국제상업회의소) 공인 자료 참고</span>
+        </span>
+      </div>
+      <div class="flex gap-2 items-center no-print">
+        <label class="sr-only" for="modeFilter">운송수단</label>
+        <select id="modeFilter" class="ctrl">
+          <option value="all">운송수단: 전체</option>
+          <option value="any">모든 운송수단</option>
+          <option value="sea">해상/내수로 전용</option>
+        </select>
+        <label class="sr-only" for="search">검색</label>
+        <input id="search" type="search" placeholder="EXW, FOB, DDP..." class="ctrl w-48" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 카드 그리드 -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <!-- 상세 패널 -->
+    <section id="detail" class="mt-10 hidden">
+      <div class="bg-white rounded-2xl shadow card border border-slate-200 overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+          <div id="d-badges" class="flex gap-2"></div>
+          <h2 id="d-title" class="text-lg sm:text-xl font-bold"></h2>
+        </div>
+        <div class="p-6 grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-2 text-slate-800">핵심 요약</h3>
+            <ul id="d-summary" class="list-disc pl-5 space-y-1 text-sm content-text"></ul>
+            <div class="mt-4">
+              <h4 class="font-semibold mb-1 text-slate-800">위험 이전 시점</h4>
+              <p id="d-risk" class="text-base sm:text-[1.05rem] text-slate-800 content-text risk-highlight"></p>
+            </div>
+            <div class="mt-4">
+              <h4 class="font-semibold mb-1 text-slate-800">보험(해당 시)</h4>
+              <p id="d-insurance" class="text-sm text-slate-700 content-text"></p>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-slate-800">비용/의무(요약)</h3>
+            <table class="w-full text-sm border border-slate-200 rounded-lg overflow-hidden table-fixed">
+              <colgroup>
+                <col style="width:45%">
+                <col style="width:27.5%">
+                <col style="width:27.5%">
+              </colgroup>
+              <thead>
+                <tr class="text-slate-800">
+                  <th class="p-2 text-left">항목</th>
+                  <th class="p-2">매도인</th>
+                  <th class="p-2">매수인</th>
+                </tr>
+              </thead>
+              <tbody id="d-alloc"></tbody>
+            </table>
+            <p class="text-xs text-slate-500 mt-2">※ 실제 계약 문구가 우선하며, 국가별 통관/세법에 따라 달라질 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 비교표 -->
+<!-- 위험 이전 한눈에 보기 -->
+    <section id="risk" class="mt-12">
+      <h2 class="text-xl font-bold mb-3">위험 이전 한눈에 보기</h2>
+      <div class="overflow-x-auto bg-white rounded-2xl shadow card border border-slate-200">
+        <table class="risk-table min-w-[900px] w-full">
+          <colgroup>
+            <col style="width:18rem">
+            <col style="width:55%">
+            <col style="width:11rem">
+            <col style="width:12rem">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="p-2 text-left">규칙</th>
+              <th class="p-2 text-left">위험 이전 시점(요약)</th>
+              <th class="p-2">운송수단</th>
+              <th class="p-2">보험(요구)</th>
+            </tr>
+          </thead>
+          <tbody id="riskBody"></tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 mt-2">※ 위험 이전은 규칙마다 시점·장소가 다릅니다. 계약서에 지정 장소(터미널, 본선, 목적지 등)를 명확히 기재하세요.</p>
+    </section>
+
+    <!-- 주의/면책 -->
+    <section class="mt-10 print-break">
+      <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl p-5">
+        <h3 class="font-bold mb-1">알림</h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>본 자료는 Incoterms® 2020 규칙을 실무 관점에서 <em>요약</em>한 안내입니다. <strong>법적 자문</strong>이 아니며, 계약서의 구체 문구가 항상 우선합니다.</li>
+          <li>EXW/DDP의 통관 책임은 국가별 제약이 있을 수 있습니다(예: 수출자는 현지에서만 가능 등). 실무 적합성 검토가 필요합니다.</li>
+          <li>해상전용 규칙(FAS, FOB, CFR, CIF)은 <strong>컨테이너 화물에는 비적합</strong>할 수 있으며 FCA/CPT/CIP 등이 일반적입니다.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="mt-16 py-10 text-center text-slate-500">
+    <p class="text-xs">© <span id="yr"></span> KBridge Co., Ltd. Incoterms® is a registered trademark of ICC. 본 페이지는 ICC 공식 출판물을 대체하지 않습니다.</p>
+  </footer>
+
+  <script>
+    // ===== 데이터 =====
+    const RULES = [
+      { code:'EXW', nameKo:'공장인도', nameEn:'Ex Works', mode:'any', badges:['모든 운송수단','Seller 최소 의무'], risk:'매도인이 자기 영업장 등 지정 장소에서 물품을 매수인 처분에 놓는 때 (적재 전).', insurance:'요구 없음(당사자 합의 가능).', summary:['수출통관 포함: × (원칙상 매수인 책임)','인도: 매도인 영업장 등 지정 장소에서 인도(적재 의무 없음)','비용: 거의 전부 매수인 부담'], alloc:{exportClr:'B', preCarriage:'B', loadOrigin:'B', mainCarriage:'B', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'FCA', nameKo:'운송인 인도', nameEn:'Free Carrier', mode:'any', badges:['모든 운송수단','수출통관: Seller'], risk:'매도인이 지정장소에서 매수인이 지명한 운송인에게 물품 인도 시.', insurance:'요구 없음.', summary:['수출통관: 매도인','인도: 운송인(지정장소)에게 인도 시 위험 이전','컨테이너 화물에 권장'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S*', mainCarriage:'B', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'FAS', nameKo:'선측 인도', nameEn:'Free Alongside Ship', mode:'sea', badges:['해상 전용 •','수출통관: Seller'], risk:'본선 선측(부두 등)에 물품을 접안/배치한 때.', insurance:'요구 없음.', summary:['수출통관: 매도인','인도: 본선 선측에서 위험 이전','벌크/비컨테이너 해상용'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'B', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'FOB', nameKo:'본선 인도', nameEn:'Free On Board', mode:'sea', badges:['해상 전용 •','수출통관: Seller'], risk:'본선에 적재가 완료된 때.', insurance:'요구 없음.', summary:['수출통관/선적까지: 매도인','위험: 본선 적재 완료 시 이전','컨테이너에는 비권장'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'B', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'CFR', nameKo:'운임 포함', nameEn:'Cost and Freight', mode:'sea', badges:['해상 전용 •','운임 포함'], risk:'본선 적재 완료 시 위험 이전(출발항).', insurance:'요구 없음(매수인이 필요 시).', summary:['운임(출발항→목적항) 매도인 부담','위험은 본선 적재 시 매수인으로 이전','보험 포함 아님'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'S', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'CIF', nameKo:'운임·보험료 포함', nameEn:'Cost, Insurance and Freight', mode:'sea', badges:['해상 전용 •','운임+보험 포함'], risk:'본선 적재 완료 시 위험 이전(출발항).', insurance:'매도인 최소 보험부보(Institute Cargo Clauses C, 당사자 합의로 상향 가능).', summary:['운임 포함 + 매도인 최소 보험(해상) 가입','위험은 본선 적재 시 매수인에 이전'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'S', insurance:'S', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'CPT', nameKo:'운송비 지급 인도', nameEn:'Carriage Paid To', mode:'any', badges:['모든 운송수단','운임 포함'], risk:'첫 운송인에게 인도 시 위험 이전.', insurance:'요구 없음.', summary:['운임(지정지까지) 매도인 부담','위험은 운송인 인도 시 매수인으로 이전'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S*', mainCarriage:'S', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'CIP', nameKo:'운송비·보험료 지급 인도', nameEn:'Carriage and Insurance Paid To', mode:'any', badges:['모든 운송수단','운임+보험 포함'], risk:'첫 운송인에게 인도 시 위험 이전.', insurance:'매도인 광범위 보험(Institute Cargo Clauses A) 및 통상 110% 권장.', summary:['운임 포함 + 매도인 광범위 보험 가입','위험은 운송인 인도 시 매수인으로 이전'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S*', mainCarriage:'S', insurance:'S', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'B'} },
+      { code:'DAP', nameKo:'도착지 인도', nameEn:'Delivered at Place', mode:'any', badges:['모든 운송수단','도착지 인도(양하 전)'], risk:'지정 목적지에서 하역 전, 매수인 처분 하에 둘 때.', insurance:'요구 없음(당사자 합의 가능).', summary:['도착지까지 운송비: 매도인','하역/수입통관/관세: 매수인'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'S', insurance:'-', unloadDest:'B', importClr:'B', dutiesTaxes:'B', delivery:'S'} },
+      { code:'DPU', nameKo:'도착지 양하 인도', nameEn:'Delivered at Place Unloaded', mode:'any', badges:['모든 운송수단','도착지 양하 포함'], risk:'지정 목적지에서 <양하 완료>하여 매수인 처분 하에 둘 때.', insurance:'요구 없음.', summary:['도착지까지 운송 + 양하: 매도인','수입통관/관세: 매수인','2010의 DAT가 2020에서 DPU로 대체'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'S', insurance:'-', unloadDest:'S', importClr:'B', dutiesTaxes:'B', delivery:'S'} },
+      { code:'DDP', nameKo:'관세지급 인도', nameEn:'Delivered Duty Paid', mode:'any', badges:['모든 운송수단','Seller 최대 의무'], risk:'지정 목적지(하역 전)에서 매수인 처분 하에 둘 때.', insurance:'요구 없음(당사자 합의 가능).', summary:['도착지까지 운송 + 수입통관/관세까지 매도인','매수인은 인수만 수행'], alloc:{exportClr:'S', preCarriage:'S', loadOrigin:'S', mainCarriage:'S', insurance:'-', unloadDest:'B', importClr:'S', dutiesTaxes:'S', delivery:'S'} }
+    ];
+
+    // ===== 카드 =====
+    const cardsEl = document.getElementById('cards');
+    const detail = document.getElementById('detail');
+    const dTitle = document.getElementById('d-title');
+    const dBadges = document.getElementById('d-badges');
+    const dSummary = document.getElementById('d-summary');
+    const dRisk = document.getElementById('d-risk');
+    const dInsurance = document.getElementById('d-insurance');
+    const dAlloc = document.getElementById('d-alloc');
+
+    function cardTemplate(rule){
+      const sea = rule.mode === 'sea';
+      const tags = sea ? '<span class="badge">해상 전용 •</span>' : '<span class="badge">모든 운송수단</span>';
+      return `
+        <article data-code="${rule.code}" data-mode="${rule.mode}" class="rule-card card overflow-hidden">
+          <button class="w-full text-left">
+            <div class="p-5 flex items-start gap-4">
+              <div class="shrink-0 h-12 w-12 rounded-xl" style="background:linear-gradient(135deg,var(--kb-grad-from),var(--kb-grad-to)); color:#fff; display:grid; place-items:center; font-weight:900; font-size:1.125rem;">${rule.code}</div>
+              <div class="grow">
+                <div class="flex items-center gap-2 flex-wrap">${tags}${rule.badges.map(b => `<span class='badge'>${b}</span>`).join('')}</div>
+                <h3 class="mt-1 font-bold text-lg">${rule.nameKo} <span class="text-slate-400 font-medium">| ${rule.nameEn}</span></h3>
+                <p class="mt-1 text-sm text-slate-700 line-clamp-2">${rule.summary[0]} · ${rule.summary[1]}</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="text-xs text-slate-500"><span class="font-semibold text-slate-700">위험 이전</span>: ${rule.risk}</div>
+            </div>
+          </button>
+        </article>
+      `;
+    }
+
+    function renderCards(){
+      cardsEl.innerHTML = RULES.map(cardTemplate).join('');
+      document.querySelectorAll('.rule-card button').forEach(btn => btn.addEventListener('click', () => showDetail(btn.closest('.rule-card').dataset.code)));
+    }
+
+    function showDetail(code){
+      const r = RULES.find(x => x.code === code);
+      if(!r) return;
+      dTitle.textContent = `${r.code} · ${r.nameKo} (${r.nameEn})`;
+      dBadges.innerHTML = (r.mode === 'sea' ? ["해상 전용 •", ...r.badges] : ["모든 운송수단", ...r.badges]).map(b => `<span class='badge'>${b}</span>`).join('');
+      dSummary.innerHTML = r.summary.map(s => `<li>${s}</li>`).join('');
+      dRisk.textContent = r.risk;
+      dInsurance.textContent = r.insurance;
+      const rows = [
+        ['수출통관', r.alloc.exportClr],
+        ['출발지 운송/반입', r.alloc.preCarriage],
+        ['출발지 적재', r.alloc.loadOrigin],
+        ['주운송비', r.alloc.mainCarriage],
+        ['보험', r.alloc.insurance],
+        ['도착지 양하', r.alloc.unloadDest],
+        ['수입통관', r.alloc.importClr],
+        ['관세·부가세', r.alloc.dutiesTaxes],
+        ['최종 인도(지정지)', r.alloc.delivery]
+      ];
+      dAlloc.innerHTML = rows.map(([k,v]) => {
+        const sell = (v==='S'||v==='S*') ? `<span class="chip chip-s">${v}</span>` : (v==='-'? '—' : '');
+        const buy  = (v==='B') ? `<span class="chip chip-b">B</span>` : (v==='S*'? '*' : '');
+        return `<tr class="odd:bg-white even:bg-slate-50"><td class="p-2 text-slate-700">${k}</td><td class="p-2 text-center">${sell}</td><td class="p-2 text-center">${buy}</td></tr>`;
+      }).join('');
+      detail.classList.remove('hidden');
+      detail.scrollIntoView({behavior:'smooth'});
+    }
+
+    // ===== 필터/검색 =====
+    const modeFilter = document.getElementById('modeFilter');
+    const search = document.getElementById('search');
+
+    function applyFilters(){
+      const mode = modeFilter.value; const q = search.value.trim().toLowerCase();
+      document.querySelectorAll('.rule-card').forEach(card => {
+        const matchMode = (mode==='all') || (card.dataset.mode===mode) || (mode==='any' && card.dataset.mode==='any');
+        const code = card.getAttribute('data-code');
+        const rule = RULES.find(r=>r.code===code);
+        const text = `${rule.code} ${rule.nameKo} ${rule.nameEn} ${rule.summary.join(' ')}`.toLowerCase();
+        const matchQuery = !q || text.includes(q);
+        card.style.display = (matchMode && matchQuery) ? '' : 'none';
+      });
+    }
+    modeFilter.addEventListener('change', applyFilters);
+    search.addEventListener('input', applyFilters);
+
+    // ===== 비교표(가로/세로) =====
+    const MATRIX_ROWS = [
+      { key:'exportClr', label:'수출통관' },
+      { key:'preCarriage', label:'출발지 운송/반입' },
+      { key:'loadOrigin', label:'출발지 적재' },
+      { key:'mainCarriage', label:'주운송비' },
+      { key:'insurance', label:'보험' },
+      { key:'unloadDest', label:'도착지 양하' },
+      { key:'importClr', label:'수입통관' },
+      { key:'dutiesTaxes', label:'관세·부가세' },
+      { key:'delivery', label:'최종 인도(지정지)' }
+    ];
+    const RULE_ORDER = ['EXW','FCA','FAS','FOB','CFR','CIF','CPT','CIP','DAP','DPU','DDP'];
+
+    function chip(val){
+      if(val==='S' || val==='S*') return `<span class="chip chip-s">${val}</span>`;
+      if(val==='B') return `<span class="chip chip-b">B</span>`;
+      if(val==='-') return '—';
+      return '';
+    }
+
+    function buildMatrixH(){
+      const body = document.getElementById('matrixH');
+      body.innerHTML = MATRIX_ROWS.map(row => {
+        const cells = RULE_ORDER.map(code => {
+          const rule = RULES.find(r=>r.code===code);
+          const val = (rule.alloc[row.key]||'').toString();
+          return `<td class='p-2 text-center'>${chip(val)}</td>`;
+        }).join('');
+        return `<tr class='odd:bg-white even:bg-slate-50'><td class='p-2 text-slate-700 text-left'>${row.label}</td>${cells}</tr>`;
+      }).join('');
+    }
+
+    function buildMatrixV(){
+      const body = document.getElementById('matrixV');
+      body.innerHTML = RULE_ORDER.map(code => {
+        const r = RULES.find(x=>x.code===code);
+        const cells = MATRIX_ROWS.map(row => chip((r.alloc[row.key]||'').toString())).map(html => `<td class='p-2 text-center'>${html}</td>`).join('');
+        return `<tr class='odd:bg-white even:bg-slate-50'><td class='p-2 text-slate-700 text-left'><strong>${r.code}</strong> · ${r.nameKo}</td>${cells}</tr>`;
+      }).join('');
+    }
+
+    function setMatrixMode(mode){
+      const isV = mode==='v';
+      document.getElementById('tableV').classList.toggle('hidden', !isV);
+      document.getElementById('tableH').classList.toggle('hidden', isV);
+      document.querySelectorAll('.seg-btn').forEach(btn=>{
+        const active = btn.dataset.mode === mode;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active? 'true' : 'false');
+      });
+    }
+
+    // ===== 위험 이전 요약표 =====
+    function buildRiskTable(){
+      const body = document.getElementById('riskBody');
+      if(!body) return;
+      body.innerHTML = RULES.map(r => {
+        const mode = r.mode === 'sea' ? '해상 전용 •' : '모든 운송수단';
+        const insuranceFlag = r.code==='CIF' ? '최소 C(해상)' : (r.code==='CIP' ? 'A(광범위)/110%' : '해당 없음');
+        return `<tr class='odd:bg-white even:bg-slate-50'>
+          <td class='p-3 text-slate-800 risk-name'>${r.code} · <small>${r.nameKo}</small></td>
+          <td class='p-3 text-slate-800'>${r.risk}</td>
+          <td class='p-3 text-center'>${mode}</td>
+          <td class='p-3 text-center'>${insuranceFlag}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ===== 인쇄/단축키/초기화 =====
+    document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+    const compareLink = document.querySelector('a[href="#compare"]');
+    compareLink?.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('compare')?.scrollIntoView({behavior:'smooth'}); });
+    document.addEventListener('keydown', (e)=>{ if((e.ctrlKey||e.metaKey) && (e.key==='p'||e.key==='P')){ e.preventDefault(); window.print(); }});
+
+    // 초기 렌더
+    renderCards();
+if (document.getElementById("compare")) { buildMatrixH(); buildMatrixV(); setMatrixMode("v"); }
+buildRiskTable();
+    applyFilters();
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
